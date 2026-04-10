@@ -10,10 +10,15 @@
 No math required — explain conceptually:
 
 - What does it mean for two text chunks to have high cosine similarity?
+-> Their embedded vector are closed in the embedded space.
+
 - Give a concrete example of two sentences that would have HIGH similarity and two that would have LOW similarity.
 - Why is cosine similarity preferred over Euclidean distance for text embeddings?
+-> it's about magnitude dependence of Euclide distance, Euclide distance asks for normalization.
 
 > **Ghi kết quả vào:** Report — Section 1 (Warm-up)
+
+ 
 
 ---
 
@@ -21,7 +26,12 @@ No math required — explain conceptually:
 
 - A document is 10,000 characters. You chunk it with `chunk_size=500`, `overlap=50`. How many chunks do you expect?
 - Formula: `num_chunks = ceil((doc_length - overlap) / (chunk_size - overlap))`
+
+-> 23
+
+
 - If overlap is increased to 100, how does this change the chunk count? Why would you want more overlap?
+-> 25, It helps to incease number of chunk, and the data is less separated than it was in the previous solution 
 
 > **Ghi kết quả vào:** Report — Section 1 (Warm-up)
 
@@ -36,17 +46,17 @@ Run `pytest tests/` to check progress.
 ### Checklist
 - [x] `Document` dataclass — ĐÃ IMPLEMENT SẴN
 - [x] `FixedSizeChunker` — ĐÃ IMPLEMENT SẴN
-- [ ] `SentenceChunker` — split on sentence boundaries, group into chunks
-- [ ] `RecursiveChunker` — try separators in order, recurse on oversized pieces
-- [ ] `compute_similarity` — cosine similarity formula with zero-magnitude guard
-- [ ] `ChunkingStrategyComparator` — call all three, compute stats
-- [ ] `EmbeddingStore.__init__` — initialize store (in-memory or ChromaDB)
-- [ ] `EmbeddingStore.add_documents` — embed and store each document
-- [ ] `EmbeddingStore.search` — embed query, rank by dot product
-- [ ] `EmbeddingStore.get_collection_size` — return count
-- [ ] `EmbeddingStore.search_with_filter` — filter by metadata, then search
-- [ ] `EmbeddingStore.delete_document` — remove all chunks for a doc_id
-- [ ] `KnowledgeBaseAgent.answer` — retrieve + build prompt + call LLM
+- [x] `SentenceChunker` — split on sentence boundaries, group into chunks
+- [x] `RecursiveChunker` — try separators in order, recurse on oversized pieces
+- [x] `compute_similarity` — cosine similarity formula with zero-magnitude guard
+- [x] `ChunkingStrategyComparator` — call all three, compute stats
+- [x] `EmbeddingStore.__init__` — initialize store (in-memory or ChromaDB)
+- [x] `EmbeddingStore.add_documents` — embed and store each document
+- [x] `EmbeddingStore.search` — embed query, rank by dot product
+- [x] `EmbeddingStore.get_collection_size` — return count
+- [x] `EmbeddingStore.search_with_filter` — filter by metadata, then search
+- [x] `EmbeddingStore.delete_document` — remove all chunks for a doc_id
+- [x] `KnowledgeBaseAgent.answer` — retrieve + build prompt + call LLM
 
 > **Nộp code:** `src/`
 > **Ghi approach vào:** Report — Section 4 (My Approach)
